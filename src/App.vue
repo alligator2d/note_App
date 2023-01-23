@@ -12,10 +12,10 @@
 						
 						<h1>{{title}}</h1>
 						
-						<p>{{search}}</p>
+<!--						<p>{{search}}</p>-->
 						
 						<Search :value="search"
-								placeholder="Find your note"
+								placeholder="Find your note by title"
 								@search="search = $event"></Search>
 						
 						<div class="icons">

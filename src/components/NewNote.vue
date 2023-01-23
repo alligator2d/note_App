@@ -1,10 +1,7 @@
 <template>
 	<div class="new-note">
 		<label>Title...</label>
-		<div>
-			<h2>{{text}}</h2>
-			<h2>{{reverseText}}</h2>
-		</div>
+		
 		<input v-model="note.title" type="text">
 		<label>Description...</label>
 		<textarea v-model="note.descr"></textarea>
@@ -20,8 +17,9 @@
 			
 			<input v-model="priority" class="radioBtn" type="radio" id="high"
 				   name="high" value="high">
-			<label for="high">High</label>
+			<label for="high">high</label>
 		</div>
+		
 		<button class="btn btnPrimary" @click="addNote">New note</button>
 	</div>
 </template>
@@ -36,14 +34,11 @@ export default {
 				descr: ""
 			},
 			priority: 'low',
-			text: 'Hello world'
 		}
 	},
 	
 	computed: {
-		reverseText () {
-			return this.text.split('').reverse().join('').toUpperCase();
-		}
+		
 	},
 	methods: {
 		addNote() {
@@ -68,5 +63,6 @@ export default {
 .radioBtn {
   width: 30px;
   display: inline-block;
+  margin-top: 5px;
 }
 </style>
