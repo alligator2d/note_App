@@ -1,8 +1,8 @@
 <template>
 	<div class="new-note">
-		<label>Title...</label>
-		
+		<label >Title...</label>
 		<input v-model="note.title" type="text">
+		
 		<label>Description...</label>
 		<textarea v-model="note.descr"></textarea>
 		

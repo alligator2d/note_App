@@ -114,7 +114,7 @@ export default {
 					descr,
 					date: new Date(Date.now()).toLocaleString(),
 				});
-			note.title='';
+			note.title = '';
 			note.descr = '';
 			this.message = null;
 		},
