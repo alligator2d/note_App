@@ -3,7 +3,6 @@
 		<div class="wrapper-content">
 			<section>
 				<div class="container">
-					
 					<Message v-if="message" :message="message"></Message>
 					
 					<new-note @addNote="addNote"></new-note>
@@ -56,29 +55,29 @@ export default {
 		  message: null,
 		  grid: true,
 		  
-		  notes: [
-			  {
-				  id:1,
-				  priority: 'low',
-				  title: "First note",
-				  descr: "Description for first note",
-				  date: new Date(Date.now()).toLocaleString()
-			  },
-			  {
-				  id:2,
-				  priority: 'middle',
-				  title: "Second note",
-				  descr: "Description for second note",
-				  date: new Date(Date.now()).toLocaleString()
-			  },
-			  {
-				  id:3,
-				  priority: 'high',
-				  title: "Third note",
-				  descr: "Description for third note",
-				  date: new Date(Date.now()).toLocaleString()
-			  }
-		  ]
+		  // notes: [
+			//   {
+			// 	  id:1,
+			// 	  priority: 'low',
+			// 	  title: "First note",
+			// 	  descr: "Description for first note",
+			// 	  date: new Date(Date.now()).toLocaleString()
+			//   },
+			//   {
+			// 	  id:2,
+			// 	  priority: 'middle',
+			// 	  title: "Second note",
+			// 	  descr: "Description for second note",
+			// 	  date: new Date(Date.now()).toLocaleString()
+			//   },
+			//   {
+			// 	  id:3,
+			// 	  priority: 'high',
+			// 	  title: "Third note",
+			// 	  descr: "Description for third note",
+			// 	  date: new Date(Date.now()).toLocaleString()
+			//   }
+		  // ]
 	  }
   },
 	computed: {
@@ -98,6 +97,9 @@ export default {
 			return array;
 		}
 		
+	},
+	created() {
+		this.notes = this.$store.getters.getNotes;
 	},
 	methods: {
 		addNote(note, priority) {

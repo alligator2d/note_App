@@ -16,15 +16,18 @@
 <script>
 export default {
 	props: {
-		notes: {
-			type: Array,
-			required: true
-		},
+		// notes: {
+		// 	type: Array,
+		// 	required: true
+		// },
 		grid: {
 			type: Boolean,
 			required: true,
 		}
 		
+	},
+	created() {
+		this.notes = this.$store.getters.getNotes;
 	},
 	computed: {
 		
