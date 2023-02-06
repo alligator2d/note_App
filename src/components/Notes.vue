@@ -1,6 +1,6 @@
 <template>
 	<div class="notes">
-		<div :style="{ 'background-color': getTextColorByPriority(note.priority)}" class="note" :class="{full: !grid}" v-for="(note) in notes" :key="note.id">
+		<div :style="{ 'background-color': getTextColorByPriority(note.priority)}" class="note" :class="{full: !grid}" v-for="(note) in getNotes" :key="note.id">
 			<div class="note-header" :class="{full: !grid}">
 				<p >{{ note.title }}</p>
 				<p class="delete" @click="removeNote(note.id)">x</p>
@@ -14,24 +14,17 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
 	props: {
-		// notes: {
-		// 	type: Array,
-		// 	required: true
-		// },
 		grid: {
 			type: Boolean,
 			required: true,
 		}
 		
 	},
-	created() {
-		this.notes = this.$store.getters.getNotes;
-	},
-	computed: {
-		
-	},
+	computed: mapGetters(['getNotes']),
 	methods: {
 		
 		removeNote(id) {

@@ -29,16 +29,13 @@ export default {
 	data() {
 		return {
 			note: {
-				
 				title: "",
 				descr: ""
 			},
 			priority: 'low',
 		}
 	},
-	
 	computed: {
-		
 	},
 	methods: {
 		addNote() {

@@ -9,10 +9,9 @@
 					
 					<div class="note-header">
 						
-						<h1>{{title}}</h1>
+						<h1>{{getTitle}}</h1>
 						
 <!--						<p>{{search}}</p>-->
-						
 						<Search :value="search"
 								placeholder="Find your note by title"
 								@search="search = $event"></Search>
@@ -40,47 +39,28 @@ import Message from "@/components/Message.vue";
 import NewNote from "@/components/NewNote.vue";
 import Notes from "@/components/Notes.vue";
 import Search from "@/components/Search.vue";
+// import {mapGetters} from "vuex";
+import notes from "@/components/Notes.vue";
+import {createNamespacedHelpers} from "vuex";
+// import {mutationTypes, actionTypes} from "@/store/Notes/types";
+
+const {mapState, mapActions, mapGetters, mapMutations} = createNamespacedHelpers('notesModule')
+
 export default {
-	components: {
-		Search,
-		Notes,
-		NewNote,
-		Message,
-	},
   data() {
 	  return {
-		  
-		  title: "Notes App",
 		  search:'',
 		  message: null,
 		  grid: true,
-		  
-		  // notes: [
-			//   {
-			// 	  id:1,
-			// 	  priority: 'low',
-			// 	  title: "First note",
-			// 	  descr: "Description for first note",
-			// 	  date: new Date(Date.now()).toLocaleString()
-			//   },
-			//   {
-			// 	  id:2,
-			// 	  priority: 'middle',
-			// 	  title: "Second note",
-			// 	  descr: "Description for second note",
-			// 	  date: new Date(Date.now()).toLocaleString()
-			//   },
-			//   {
-			// 	  id:3,
-			// 	  priority: 'high',
-			// 	  title: "Third note",
-			// 	  descr: "Description for third note",
-			// 	  date: new Date(Date.now()).toLocaleString()
-			//   }
-		  // ]
 	  }
   },
 	computed: {
+	  // ...mapGetters(['getNotes', 'getTitle']),
+		...mapState({
+			notes: state => state.notes,
+			
+		}),
+		
 		notesFilter() {
 			let array = this.notes;
 			let search = this.search;
@@ -96,10 +76,6 @@ export default {
 			})
 			return array;
 		}
-		
-	},
-	created() {
-		this.notes = this.$store.getters.getNotes;
 	},
 	methods: {
 		addNote(note, priority) {
@@ -123,7 +99,13 @@ export default {
 		removeNote(id){
 			this.notes = this.notes.filter(i => i.id !== id);
 		}
-	}
+	},
+	components: {
+		Search,
+		Notes,
+		NewNote,
+		Message,
+	},
 }
 </script>
 

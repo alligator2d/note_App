@@ -1,43 +1,19 @@
+// import Vuex from 'vuex'
 import { createStore } from 'vuex'
+import {notesModule} from "@/store/Notes/Notes";
+
 
 export default createStore({
-  state: {
-    notes: [
-      {
-        id:1,
-        priority: 'low',
-        title: "First note",
-        descr: "Description for first note",
-        date: new Date(Date.now()).toLocaleString()
-      },
-      {
-        id:2,
-        priority: 'middle',
-        title: "Second note",
-        descr: "Description for second note",
-        date: new Date(Date.now()).toLocaleString()
-      },
-      {
-        id:3,
-        priority: 'high',
-        title: "Third note",
-        descr: "Description for third note",
-        date: new Date(Date.now()).toLocaleString()
-      }
-    ]
-  },
+  state: {},
   getters: {
     getNotes(state) {
       return state.notes
+    },
+    getTitle(state) {
+      return state.title
     }
   },
-  mutations: {
-    
-  },
-  actions: {
-    
-  },
-  modules: {
-    
-  }
+  mutations: {},
+  actions: {},
+  modules: {notesModule}
 })
