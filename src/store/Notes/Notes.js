@@ -1,7 +1,7 @@
 import { Module } from "vuex";
 import { gettersTypes, actionTypes, mutationTypes } from "./types";
 
-export const notesModule: Module<any, any> = {
+export const notesModule = {
 	namespaced: true,
 	state: {
 		notes: [
@@ -27,9 +27,20 @@ export const notesModule: Module<any, any> = {
 				date: new Date(Date.now()).toLocaleString()
 			}
 		],
-		title: "Notes App"
+		title: "Notes App",
+		message: null,
+		
 	},
 	getters: {},
-	actions: {},
-	mutations: {}
+	actions: {
+		[actionTypes.removeNote]({commit, state}, value) {
+			const newNotes = state.notes.filter(i => i.id !== value);
+			commit(mutationTypes.SET_NOTES, newNotes)
+		}
+	},
+	mutations: {
+		[mutationTypes.SET_NOTES](state, value) {
+			state.notes = value
+		}
+	}
 };

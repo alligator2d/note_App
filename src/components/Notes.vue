@@ -1,6 +1,6 @@
 <template>
 	<div class="notes">
-		<div :style="{ 'background-color': getTextColorByPriority(note.priority)}" class="note" :class="{full: !grid}" v-for="(note) in getNotes" :key="note.id">
+		<div :style="{ 'background-color': getTextColorByPriority(note.priority)}" class="note" :class="{full: !grid}" v-for="(note) in notes" :key="note.id">
 			<div class="note-header" :class="{full: !grid}">
 				<p >{{ note.title }}</p>
 				<p class="delete" @click="removeNote(note.id)">x</p>
@@ -14,7 +14,8 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import { createNamespacedHelpers} from "vuex";
+const {mapState, mapActions, mapGetters, mapMutations} = createNamespacedHelpers('notesModule')
 
 export default {
 	props: {
@@ -24,7 +25,12 @@ export default {
 		}
 		
 	},
-	computed: mapGetters(['getNotes']),
+	computed: {
+		...mapState({
+			notes: state => state.notes,
+
+		}),
+	},
 	methods: {
 		
 		removeNote(id) {
