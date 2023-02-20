@@ -63,7 +63,7 @@ export default {
 	data() {
 		return {
 			search: "",
-			// message: null,
+			message: null,
 			grid: true
 		};
 	},
@@ -71,7 +71,7 @@ export default {
 		...mapState({
 			notes: state => state.notes,
 			title: state => state.title,
-			message: state => state.message
+			// message: state => state.message
 		}),
 		
 		notesFilter() {

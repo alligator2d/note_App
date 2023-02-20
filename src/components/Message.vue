@@ -9,12 +9,12 @@ import { createNamespacedHelpers } from "vuex";
 const { mapState, mapActions, mapGetters, mapMutations } = createNamespacedHelpers("notesModule");
 
 export default {
-	// props: {
-	// 	message: {
-	// 		type: String,
-	// 		required: true,
-	// 	}
-	// }
+	props: {
+		message: {
+			type: String,
+			required: true,
+		}
+	},
 	computed: {
 		...mapState({
 			message: state => state.message

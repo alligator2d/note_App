@@ -28,7 +28,7 @@ export const notesModule = {
 			}
 		],
 		title: "Notes App",
-		message: null,
+		// message: null,
 		
 	},
 	getters: {},
